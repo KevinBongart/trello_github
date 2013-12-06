@@ -11,18 +11,26 @@ version TrelloGithub::VERSION
 
 desc 'Describe create here'
 arg_name 'Describe arguments to create here'
-command :create do |c|
+command :branch do |c|
   c.action do |global_options, options, args|
     trello_url = args.first
-
-    local_repo = Git.init
-    remote_repo = local_repo.remotes.first.url.gsub(/.+:(.+)\.git/, '\1')
 
     branch = trello_url.gsub(/.+\/(.+)/,'\1')
     branch.tr!("-", "_")
     branch.downcase!
 
-    exec "grb create #{branch} && open https://github.com/#{remote_repo}/pull/new/#{branch}"
+    exec "grb create #{branch}"
+  end
+end
+
+command :pr do |c|
+  c.action do |global_options, options, args|
+    local_repo = Git.init
+    remote_repo = local_repo.remotes.first.url.gsub(/.+:(.+)\.git/, '\1')
+
+    branch = Git.init.lib.branch_current
+
+    exec "open https://github.com/#{remote_repo}/pull/new/#{branch}"
   end
 end
 

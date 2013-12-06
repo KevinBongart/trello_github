@@ -1,0 +1,5 @@
+= trello_github
+
+Generate this with
+    trello_github rdoc
+After you have described your command line interface

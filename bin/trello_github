@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+require 'gli'
+require 'trello_github'
+
+include GLI::App
+
+program_desc 'Describe your application here'
+
+version TrelloGithub::VERSION
+
+desc 'Describe create here'
+arg_name 'Describe arguments to create here'
+command :create do |c|
+  c.action do |global_options, options, args|
+    trello_url = args.first
+
+    branch_name = trello_url.gsub(/.+\/(.+)/,'\1')
+    branch_name.tr!("-", "_")
+    branch_name.downcase!
+
+    exec "grb create #{branch_name}"
+  end
+end
+
+exit run(ARGV)

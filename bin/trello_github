@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+require 'git'
 require 'gli'
 require 'trello_github'
 
@@ -14,11 +15,14 @@ command :create do |c|
   c.action do |global_options, options, args|
     trello_url = args.first
 
-    branch_name = trello_url.gsub(/.+\/(.+)/,'\1')
-    branch_name.tr!("-", "_")
-    branch_name.downcase!
+    local_repo = Git.init
+    remote_repo = local_repo.remotes.first.url.gsub(/.+:(.+)\.git/, '\1')
 
-    exec "grb create #{branch_name}"
+    branch = trello_url.gsub(/.+\/(.+)/,'\1')
+    branch.tr!("-", "_")
+    branch.downcase!
+
+    exec "grb create #{branch} && open https://github.com/#{remote_repo}/pull/new/#{branch}"
   end
 end
 

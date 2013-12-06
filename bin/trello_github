@@ -17,6 +17,7 @@ command :branch do |c|
     trello_url = args.first
 
     branch = trello_url.gsub(/.+\/(.+)/,'\1')
+    branch.gsub!(/\d+-(?:[a-z]+-\d+-)?(?:(?:xs|s|m|l|xl)-)?(.+)/,'\1')
     branch.tr!("-", "_")
     branch.downcase!
 

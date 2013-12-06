@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+require 'CGI'
 require 'git'
 require 'gli'
 require 'trello_github'
@@ -30,7 +31,15 @@ command :pr do |c|
 
     branch = Git.init.lib.branch_current
 
-    exec "open https://github.com/#{remote_repo}/pull/new/#{branch}"
+    if args.any?
+      description = args.first
+      description = CGI::escape("[Trello](#{description})")
+    end
+
+    url = "https://github.com/#{remote_repo}/compare/#{branch}?expand=1"
+    url += "&body=#{description}" if description
+
+    exec "open #{url}"
   end
 end
 

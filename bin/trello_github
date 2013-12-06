@@ -6,14 +6,16 @@ require 'trello_github'
 
 include GLI::App
 
-program_desc 'Describe your application here'
+program_desc 'Easier Trello-to-GitHub commands'
 
 version TrelloGithub::VERSION
 
-desc 'Describe create here'
-arg_name 'Describe arguments to create here'
+desc 'Creates a branch based on a Trello card URL'
+arg_name "url"
 command :branch do |c|
   c.action do |global_options, options, args|
+    exit_now!("A Trello card is required. Try something like this:\ntrello_github branch https://trello.com/c/HhfKFxFy/1267-dec-4-m-make-user-profile-better") if args.empty?
+
     trello_url = args.first
 
     branch = trello_url.gsub(/.+\/(.+)/,'\1')
@@ -25,6 +27,7 @@ command :branch do |c|
   end
 end
 
+desc 'Creates a pull request based on the current branch'
 command :pr do |c|
   c.action do |global_options, options, args|
     local_repo = Git.init

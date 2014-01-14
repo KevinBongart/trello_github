@@ -32,7 +32,6 @@ command :pr do |c|
   c.action do |global_options, options, args|
     local_repo = Git.init
     remote_repo = local_repo.remotes.first.url.gsub(/.+:(.+)\.git/, '\1')
-
     branch = Git.init.lib.branch_current
 
     if args.any?
@@ -43,7 +42,7 @@ command :pr do |c|
     url = "https://github.com/#{remote_repo}/compare/#{branch}?expand=1"
     url += "&body=#{description}" if description
 
-    exec "open #{url}"
+    exec "open \"#{url}\""
   end
 end
 

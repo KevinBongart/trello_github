@@ -29,3 +29,7 @@ $ trello_github branch https://trello.com/c/HhfKFxFy/1267-dec-4-m-make-user-prof
 $ trello_github pr https://trello.com/c/HhfKFxFy/1267-dec-4-m-make-user-profile-better
 # opens a pull request page on GitHub
 ```
+
+## Demo
+
+[![Screenshot](http://f.cl.ly/items/3u2X062s0T2z0Y17393V/screenshot%202014-01-14%20at%204.56.43%20PM.png)](https://v.usetapes.com/FskGpPJgr5)

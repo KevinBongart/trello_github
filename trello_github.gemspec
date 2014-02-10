@@ -20,4 +20,6 @@ lib/trello_github.rb
   s.add_development_dependency('rake')
   s.add_development_dependency('aruba')
   s.add_runtime_dependency('gli','2.8.1')
+  s.add_runtime_dependency('git')
+  s.add_runtime_dependency('git_remote_branch')
 end

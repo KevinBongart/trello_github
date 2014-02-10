@@ -9,7 +9,7 @@ GIT
 PATH
   remote: .
   specs:
-    trello_github (0.0.2)
+    trello_github (0.0.3)
       git
       git_remote_branch
       gli (= 2.8.1)

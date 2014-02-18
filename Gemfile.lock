@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     trello_github (0.0.3)
-      git
-      git_remote_branch
+      git (= 1.2.6)
+      git_remote_branch (= 0.3.8)
       gli (= 2.8.1)
 
 GEM
@@ -39,8 +39,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aruba
+  aruba (= 0.5.4)
   git
   git_remote_branch
-  rake
+  rake (= 10.1.1)
   trello_github!

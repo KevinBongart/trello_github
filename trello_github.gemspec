@@ -1,15 +1,15 @@
 # Ensure we require the local version and not one we might have installed already
 require File.join([File.dirname(__FILE__),'lib','trello_github','version.rb'])
 spec = Gem::Specification.new do |s|
-  s.name = 'trello_github'
-  s.version = TrelloGithub::VERSION
-  s.licenses = ['MIT']
-  s.author = 'Kevin Bongart'
-  s.email = 'contact@kevinbongart.net'
-  s.homepage = 'https://github.com/KevinBongart/trello_github'
-  s.platform = Gem::Platform::RUBY
-  s.summary = 'Easier Trello-to-GitHub commands'
-  s.description = 'Easier Trello-to-GitHub commands'
+  s.name        = 'trello_github'
+  s.version     = TrelloGithub::VERSION
+  s.licenses    = ['MIT']
+  s.author      = 'Kevin Bongart'
+  s.email       = 'contact@kevinbongart.net'
+  s.homepage    = 'https://github.com/KevinBongart/trello_github'
+  s.platform    = Gem::Platform::RUBY
+  s.summary     = 'Easier Trello-to-GitHub commands'
+  s.description = 'Create branches and pull-requests based on Trello card names'
 # Add your other files here if you make them
   s.files = %w(
 bin/trello_github

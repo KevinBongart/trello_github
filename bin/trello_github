@@ -34,12 +34,18 @@ command :pr do |c|
     remote_repo = local_repo.remotes.first.url.gsub(/.+:(.+)\.git/, '\1')
     branch = Git.init.lib.branch_current
 
+    title = branch.dup
+    title.tr!("_", " ")
+    title.capitalize!
+    title = CGI::escape(title)
+
     if args.any?
-      description = args.first
-      description = CGI::escape("[Trello](#{description})")
+      trello_url = args.first
+      description = CGI::escape("[Trello](#{trello_url})")
     end
 
     url = "https://github.com/#{remote_repo}/compare/#{branch}?expand=1"
+    url += "&title=#{title}"
     url += "&body=#{description}" if description
 
     exec "open \"#{url}\""
